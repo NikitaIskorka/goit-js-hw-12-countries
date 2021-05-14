@@ -3,16 +3,14 @@ import './js/fetchCountries'
 import countryCard from "./js/templates/country-card.hbs"
 import fetchCountries from './js/fetchCountries'
 import notification from './js/pnotify'
-var debounce = require('lodash.debounce');
-console.dir(debounce);
+import _ from 'lodash';
 const refs = {
     input: document.querySelector('.input-js'),
     countryContainer: document.querySelector('.country-list')
 }
-console.log(refs.input);
-console.log(refs.countryContainer);
 
-refs.input.addEventListener('input',  debounce(onInputChange,500)) 
+
+refs.input.addEventListener('input',  _.debounce(onInputChange,500)) 
 
 function onInputChange(event) {
     clearCountryList()
