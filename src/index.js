@@ -12,11 +12,11 @@ const refs = {
 console.log(refs.input);
 console.log(refs.countryContainer);
 
-refs.input.addEventListener('input',  debounce(onInputChange,100)) 
+refs.input.addEventListener('input',  debounce(onInputChange,500)) 
 
 function onInputChange(event) {
     clearCountryList()
-    const inputValue = event.currentTarget.value.toLowerCase()
+    const inputValue = event.target.value.toLowerCase()
     fetchCountries(inputValue).then(makeCountryCardMarkup).then(insertCountryCardMarkup).catch(notification.onErrorNotification)
 }
 
@@ -28,11 +28,12 @@ function makeCountryCardMarkup(country) {
     }
     if (country.length === 1) {
         notification.onSucsessNotification()
-       return  countryCard(country[0])
+       
+        return countryCard(country[0])
     }
     
     
-    return countryCard(country)
+    return  country.map(country => `<li class='possible-country-list'>${country.name}</li>`).join('');
 }
 
 

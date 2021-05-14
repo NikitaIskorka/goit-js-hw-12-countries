@@ -65,3 +65,8 @@ form.example input[type='text'] {
   width: 80%;
   background: #f1f1f1;
 }
+.possible-country-list {
+  font-size: 20px;
+
+  text-transform: uppercase;
+}
